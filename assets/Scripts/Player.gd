@@ -7,6 +7,10 @@ var jumps = 2
 export var gravity = 800.0
 
 
+func _ready():
+	Global.player = self
+
+
 func _physics_process(delta:float) -> void:
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if (direction != 0):

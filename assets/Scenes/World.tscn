@@ -24,10 +24,13 @@ tile_data = PoolIntArray( -1441825, 0, 1, -1441824, 0, 65536, -1441823, 0, 65536
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+process_mode = 0
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 smoothing_enabled = true
+drag_margin_left = 0.25
 drag_margin_top = 0.1
+drag_margin_right = 0.25
 drag_margin_bottom = 0.1
 
 [node name="Spike" parent="." instance=ExtResource( 3 )]
