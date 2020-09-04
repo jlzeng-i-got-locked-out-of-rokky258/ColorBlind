@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/3_0.tga-031e688ca5daca97d250d98295d5742f.stex"
+path="res://.import/3_0.tga-799641d02d9e0c328fd6074a11390bf1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/3_0.tga"
-dest_files=[ "res://.import/3_0.tga-031e688ca5daca97d250d98295d5742f.stex" ]
+source_file="res://assets/Graphics/3_0.tga"
+dest_files=[ "res://.import/3_0.tga-799641d02d9e0c328fd6074a11390bf1.stex" ]
 
 [params]
 
