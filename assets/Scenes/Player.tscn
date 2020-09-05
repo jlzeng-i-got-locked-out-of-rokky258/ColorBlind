@@ -3,8 +3,8 @@
 [ext_resource path="res://assets/graphics/monochrome_transparent_packed.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4.90524, 4.63556 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.0
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -12,8 +12,10 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+hframes = 6
 region_enabled = true
-region_rect = Rect2( 304, 114, 16, 16 )
+region_rect = Rect2( 288, 112, 96, 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3 )
 shape = SubResource( 1 )

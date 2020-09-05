@@ -10,4 +10,3 @@ func _ready():
 
 func _process(delta):
 	time += delta
-	player.modulate.r = abs(sin(time))
