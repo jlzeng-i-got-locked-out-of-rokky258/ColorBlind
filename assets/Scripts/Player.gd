@@ -1,8 +1,13 @@
 extends KinematicBody2D
 
+
+#Variables that need to be set to false at the start so the player has progression 
+export var canDash = false;
+export var maxJumps = 1;
+export var canFloat = false;
+
 export var maxSpeed = Vector2(2250.0, 800.0)
 export var gravity = 800.0
-export var maxJumps = 2
 export var jumpSpeed = -170
 export var dashSpeed = 600.0
 
@@ -24,6 +29,8 @@ var dashTimer = 0.0
 var dashing = false
 var dashDirection = 0
 var dashCooldownTimer = 0.0
+
+
 
 func _ready():
 	Global.player = self
@@ -76,7 +83,7 @@ func _physics_process(delta):
 			fallTimer = FALL_TIME
 			falling = false
 		else:
-			if Input.is_action_pressed("move_jump") and velocity.y > 0.0: # Slow fall
+			if Input.is_action_pressed("move_jump") and velocity.y > 0.0 and canFloat: # Slow fall
 				velocity.y += gravity * 0.25 * delta 
 				if falling:
 					$Sprite.frame = 4
@@ -98,7 +105,7 @@ func _physics_process(delta):
 		falling = true
 		fallTimer = 0.0
 		jumps -= 1
-	if dashCooldownTimer <= 0.0 and Input.is_action_just_pressed("move_dash"):
+	if dashCooldownTimer <= 0.0 and Input.is_action_just_pressed("move_dash") and canDash:
 		if !dashing:
 			dashTimer = DASH_TIME
 			dashing = true
