@@ -16,7 +16,7 @@ func _process(_delta):
 
 func load_dialog():
 	if (dialog_index < dialog.size()):
-		$RichTextLabel.bbcode_text = dialog[dialog_index]
+		$RichTextLabel.bbcode_text = dialog[dialog_index].to_upper()
 	else:
 		queue_free()
 	dialog_index += 1

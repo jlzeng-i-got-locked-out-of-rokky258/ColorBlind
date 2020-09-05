@@ -52,3 +52,6 @@ custom_colors/default_color = Color( 0.152941, 0.933333, 0.694118, 1 )
 bbcode_enabled = true
 bbcode_text = "HELLO FRIENDS I CAN ONLY TYPE IN ALL CAPS BECAUSE RICHY CHOSE A FONT WITH NO LOWERCASE"
 text = "HELLO FRIENDS I CAN ONLY TYPE IN ALL CAPS BECAUSE RICHY CHOSE A FONT WITH NO LOWERCASE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
