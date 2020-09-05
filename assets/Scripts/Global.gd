@@ -10,3 +10,7 @@ func _ready():
 
 func _process(delta):
 	time += delta
+
+
+func killPlayer():
+	player.die()

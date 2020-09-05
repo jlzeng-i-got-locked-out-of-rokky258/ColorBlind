@@ -1,12 +1,15 @@
 extends KinematicBody2D
 
+var alive = true
+
+var lastSafePosition = Vector2(0, 0)
 
 #Variables that need to be set to false at the start so the player has progression 
-export var canDash = false;
-export var maxJumps = 1;
-export var canFloat = false;
+export var canDash = true;
+export var maxJumps = 2;
+export var canFloat = true;
 
-export var maxSpeed = Vector2(2250.0, 800.0)
+export var maxSpeed = Vector2(2750.0, 800.0)
 export var gravity = 800.0
 export var jumpSpeed = -170
 export var dashSpeed = 600.0
@@ -31,17 +34,20 @@ var dashDirection = 0
 var dashCooldownTimer = 0.0
 
 
-
 func _ready():
 	Global.player = self
 	$Sprite.modulate = Color(1, 1, 1)
 	startColor = $Sprite.modulate
 
 
-func _physics_process(delta):
+func _process(delta):
+	if !alive:
+		position.y -= 10 * delta
+		return
+	
 	if (velocity.y > maxSpeed.y):
 		velocity.y = maxSpeed.y
-	
+		
 	var desiredColor = startColor
 	
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -124,5 +130,18 @@ func _physics_process(delta):
 #	desiredColor.r = 1.0 - (float(jumps) / maxJumps)
 	$Sprite.modulate = lerp($Sprite.modulate, desiredColor, 4.0 * delta)
 	
-	velocity.x *= 0.85
 	velocity = move_and_slide(velocity, Vector2(0, -1))
+	velocity.x *= 0.9
+
+
+func die():
+	alive = false
+	$AnimationPlayer.play("Death")
+	$CollisionShape2D.disabled = true
+
+
+func respawn():
+	alive = true
+	$AnimationPlayer.play("Idle")
+	$CollisionShape2D.disabled = false
+	position = lastSafePosition
