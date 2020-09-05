@@ -27,7 +27,7 @@ var dashCooldownTimer = 0.0
 
 func _ready():
 	Global.player = self
-	$Sprite.modulate = Color(0.0, 0.0, 0.0, 1.0)
+	$Sprite.modulate = Color(1, 1, 1)
 	startColor = $Sprite.modulate
 
 
@@ -68,7 +68,7 @@ func _physics_process(delta):
 		velocity.y = 0.0
 		fallTimer = 0.0
 		falling = false
-		desiredColor.g = 0.0
+		desiredColor = Color(1, 1, 1)
 	else:
 		# Don't start "falling" until a short period after leaving the ground
 		# This means we won't eat the jump until they have fallen a certain duration
@@ -80,11 +80,11 @@ func _physics_process(delta):
 				velocity.y += gravity * 0.25 * delta 
 				if falling:
 					$Sprite.frame = 4
-					desiredColor.g = 1.0
+					desiredColor = Color(1, 0.714844, 0.868561)
 			else: # Normal fall
 				velocity.y += gravity * delta
 				if falling:
-					desiredColor.g = 0.0
+					desiredColor = Color(0.935638, 0.777344, 1)
 					$Sprite.frame = 3
 			if !falling:
 				fallTimer -= delta
@@ -106,7 +106,7 @@ func _physics_process(delta):
 		dashTimer -= delta
 		velocity.x = dashSpeed * dashDirection
 		velocity.y = 0.0
-		desiredColor.b = 1.0
+		desiredColor = Color(0.025009, 0.582031, 0.5037);
 		if dashTimer <= 0.0:
 			dashCooldownTimer = DASH_COOLDOWN
 			dashing = false
@@ -114,7 +114,7 @@ func _physics_process(delta):
 		dashCooldownTimer -= delta
 		desiredColor.b = lerp(1.0, startColor.b, (DASH_COOLDOWN - dashCooldownTimer) / DASH_COOLDOWN)
 	
-	desiredColor.r = 1.0 - (float(jumps) / maxJumps)
+#	desiredColor.r = 1.0 - (float(jumps) / maxJumps)
 	$Sprite.modulate = lerp($Sprite.modulate, desiredColor, 4.0 * delta)
 	
 	velocity.x *= 0.85

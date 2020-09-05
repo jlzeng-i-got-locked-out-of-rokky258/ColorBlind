@@ -64,4 +64,5 @@ move_dash={
 [rendering]
 
 quality/2d/use_pixel_snap=true
+environment/default_clear_color=Color( 0.140625, 0.138977, 0.138977, 1 )
 environment/default_environment="res://default_env.tres"
