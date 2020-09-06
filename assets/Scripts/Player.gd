@@ -9,7 +9,9 @@ export var canDash = true;
 export var maxJumps = 2;
 export var canFloat = true;
 
-export var maxSpeed = Vector2(2750.0, 800.0)
+export var maxSpeed = Vector2(750.0, 800.0)
+export var HORIZONTAL_DAMPING = 0.4
+export var HORIZONTAL_DAMPING_WHEN_STOPPING = 0.8
 export var gravity = 800.0
 export var jumpSpeed = -170
 export var dashSpeed = 600.0
@@ -33,6 +35,8 @@ var dashing = false
 var dashDirection = 0
 var dashCooldownTimer = 0.0
 
+var SnapVector = Vector2(0, 6)
+export var MAX_SLOPE = 45.0 * PI / 180.0
 
 func _ready():
 	Global.player = self
@@ -40,20 +44,18 @@ func _ready():
 	startColor = $Sprite.modulate
 
 
-func _process(delta):
+func _physics_process(delta):
 	if !alive:
 		position.y -= 10 * delta
 		return
 	
-	if (velocity.y > maxSpeed.y):
-		velocity.y = maxSpeed.y
-		
+	var newMovement = Vector2(0, 0)
+	
 	var desiredColor = startColor
 	
 	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if (direction != 0):
-		velocity.x += maxSpeed.x * direction * delta
-		velocity.x = clamp(velocity.x, -maxSpeed.x, maxSpeed.x)
+		newMovement.x = maxSpeed.x * direction * delta
 		
 		if !dashing:
 			dashDirection = sign(direction)
@@ -82,6 +84,7 @@ func _process(delta):
 		fallTimer = 0.0
 		falling = false
 		desiredColor = Color(1, 1, 1)
+		SnapVector.y = 6.0
 	else:
 		# Don't start "falling" until a short period after leaving the ground
 		# This means we won't eat the jump until they have fallen a certain duration
@@ -90,12 +93,12 @@ func _process(delta):
 			falling = false
 		else:
 			if Input.is_action_pressed("move_jump") and velocity.y > 0.0 and canFloat: # Slow fall
-				velocity.y += gravity * 0.25 * delta 
+				newMovement.y += gravity * 0.25 * delta 
 				if falling:
 					$Sprite.frame = 4
 					desiredColor = Color(1, 0.714844, 0.868561)
 			else: # Normal fall
-				velocity.y += gravity * delta
+				newMovement.y += gravity * delta
 				if falling:
 					desiredColor = Color(0.935638, 0.777344, 1)
 					$Sprite.frame = 3
@@ -111,12 +114,14 @@ func _process(delta):
 		falling = true
 		fallTimer = 0.0
 		jumps -= 1
+		SnapVector.y = 0
 	if dashCooldownTimer <= 0.0 and Input.is_action_just_pressed("move_dash") and canDash:
 		if !dashing:
 			dashTimer = DASH_TIME
 			dashing = true
 	if dashing:
 		dashTimer -= delta
+		SnapVector.y = 0
 		velocity.x = dashSpeed * dashDirection
 		velocity.y = 0.0
 		desiredColor = Color(0.025009, 0.582031, 0.5037);
@@ -130,8 +135,17 @@ func _process(delta):
 #	desiredColor.r = 1.0 - (float(jumps) / maxJumps)
 	$Sprite.modulate = lerp($Sprite.modulate, desiredColor, 4.0 * delta)
 	
-	velocity = move_and_slide(velocity, Vector2(0, -1))
-	velocity.x *= 0.9
+	velocity += newMovement
+	
+	velocity.x = clamp(velocity.x, -maxSpeed.x, maxSpeed.x)
+	velocity.y = clamp(velocity.y, -maxSpeed.y, maxSpeed.y)
+	
+	velocity = move_and_slide_with_snap(velocity, SnapVector, Vector2(0, -1), true, 4, 0.8)
+	
+	if direction:
+		velocity.x *= pow(1 - HORIZONTAL_DAMPING, delta * 10)
+	else: # Stopping
+		velocity.x *= pow(1 - HORIZONTAL_DAMPING_WHEN_STOPPING, delta * 10)
 
 
 func die():
