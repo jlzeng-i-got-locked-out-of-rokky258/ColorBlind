@@ -49,7 +49,7 @@ func _ready():
 	Global.player = self
 	$Sprite.modulate = Color(1, 1, 1)
 	startColor = $Sprite.modulate
-
+	lastSafePosition = position
 
 func _physics_process(delta):
 	if !alive:
@@ -179,7 +179,9 @@ func _physics_process(delta):
 		velocity.x *= pow(1 - HORIZONTAL_DAMPING, delta * 10)
 	else: # Stopping
 		velocity.x *= pow(1 - HORIZONTAL_DAMPING_WHEN_STOPPING, delta * 10)
-
+	
+	if (Input.is_action_just_pressed("move_down")):
+		lastSafePosition = position
 
 func die():
 	alive = false
