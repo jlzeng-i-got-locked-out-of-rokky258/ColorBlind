@@ -8,6 +8,7 @@ var lastSafePosition = Vector2(0, 0)
 export var canDash = true;
 export var maxJumps = 2;
 export var canFloat = true;
+export var canWallJump = true;
 
 export var maxSpeed = Vector2(750.0, 800.0)
 export var HORIZONTAL_DAMPING = 0.4
@@ -112,12 +113,19 @@ func _physics_process(delta):
 					if jumps == maxJumps:
 						jumps -= 1
 	
-	if (Input.is_action_just_pressed("move_jump") && jumps > 0):
+	if (Input.is_action_just_pressed("move_jump") && jumps > 0 && (!is_on_wall() or is_on_floor())):
 		velocity.y = jumpSpeed
 		falling = true
 		fallTimer = 0.0
 		jumps -= 1
 		SnapVector.y = 0
+	if (Input.is_action_just_pressed("move_jump") && is_on_wall() && canWallJump && !is_on_floor()):
+		velocity.y = jumpSpeed*1.2
+		falling = true
+		fallTimer = 0.0
+		SnapVector.y = 0
+		velocity.x = maxSpeed.x * -dashDirection *.35
+	
 	if dashCooldownTimer <= 0.0 and Input.is_action_just_pressed("move_dash") and canDash:
 		if !dashing:
 			dashTimer = DASH_TIME
