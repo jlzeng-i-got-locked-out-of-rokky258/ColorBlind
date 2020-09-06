@@ -18,3 +18,4 @@ shape = SubResource( 1 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 352, 64, 16, 16 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
