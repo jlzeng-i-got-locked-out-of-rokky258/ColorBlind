@@ -5,10 +5,10 @@ var alive = true
 var lastSafePosition = Vector2(0, 0)
 
 #Variables that need to be set to false at the start so the player has progression 
-export var canDash = true;
-export var maxJumps = 2;
-export var canFloat = true;
-export var canWallJump = true;
+export var canDash = false;
+export var maxJumps = 1;
+export var canFloat = false;
+export var canWallJump = false;
 
 export var maxSpeed = Vector2(750.0, 800.0)
 export var HORIZONTAL_DAMPING = 0.4
