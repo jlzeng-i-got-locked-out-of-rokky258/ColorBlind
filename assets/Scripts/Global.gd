@@ -27,3 +27,6 @@ func killPlayer():
 
 func getDeaths():
 	return deaths
+
+func getScore():
+	return score

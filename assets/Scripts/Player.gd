@@ -12,12 +12,13 @@ export var canFloat = true;
 export var maxSpeed = Vector2(750.0, 800.0)
 export var HORIZONTAL_DAMPING = 0.4
 export var HORIZONTAL_DAMPING_WHEN_STOPPING = 0.8
-export var gravity = 800.0
+export var maxGravity = 800.0
 export var jumpSpeed = -170
 export var dashSpeed = 600.0
 
 var velocity = Vector2(0, 0)
 var jumps = maxJumps
+var gravity = maxGravity
 
 export var WALK_FRAME_TIME = 0.2
 var frameTimer = 0.0
@@ -85,6 +86,7 @@ func _physics_process(delta):
 		falling = false
 		desiredColor = Color(1, 1, 1)
 		SnapVector.y = 6.0
+		gravity = maxGravity
 	else:
 		# Don't start "falling" until a short period after leaving the ground
 		# This means we won't eat the jump until they have fallen a certain duration
@@ -93,10 +95,11 @@ func _physics_process(delta):
 			falling = false
 		else:
 			if Input.is_action_pressed("move_jump") and velocity.y > 0.0 and canFloat: # Slow fall
-				newMovement.y += gravity * 0.25 * delta 
+				newMovement.y += gravity * 0.1 * delta 
 				if falling:
 					$Sprite.frame = 4
 					desiredColor = Color(1, 0.714844, 0.868561)
+					
 			else: # Normal fall
 				newMovement.y += gravity * delta
 				if falling:

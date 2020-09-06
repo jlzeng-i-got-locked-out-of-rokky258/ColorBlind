@@ -14,3 +14,4 @@ func _ready():
 
 func _process(delta):
 	$DeathCount.bbcode_text = "DEATHS: " + str(Global.getDeaths())
+	$ScoreCount.bbcode_text = "[right]SCORE: " + str(Global.getScore())
