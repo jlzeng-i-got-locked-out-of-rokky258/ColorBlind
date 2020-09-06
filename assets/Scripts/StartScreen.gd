@@ -19,6 +19,9 @@ func _on_QuitButton_pressed():
 	print_debug("PRESSED")
 	get_tree().quit()
 
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
 
 func _on_Fade_fade_finished():
 	print_debug("changing")
