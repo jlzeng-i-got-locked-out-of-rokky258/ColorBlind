@@ -61,13 +61,13 @@ colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="GradientTexture" id=5]
 gradient = SubResource( 4 )
 
-[sub_resource type="Curve" id=7]
+[sub_resource type="Curve" id=6]
 _data = [ Vector2( 0, 0.452273 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -0.38474, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=8]
-curve = SubResource( 7 )
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=8]
 lifetime_randomness = 0.1
 emission_shape = 2
 emission_box_extents = Vector3( 3, 1, 1 )
@@ -81,7 +81,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 90.0
 angle_random = 1.0
-scale_curve = SubResource( 8 )
+scale_curve = SubResource( 7 )
 color_ramp = SubResource( 5 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -91,6 +91,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 6
+frame = 5
 region_enabled = true
 region_rect = Rect2( 288, 112, 96, 16 )
 
@@ -117,5 +118,5 @@ amount = 40
 lifetime = 0.3
 explosiveness = 0.15
 local_coords = false
-process_material = SubResource( 6 )
+process_material = SubResource( 8 )
 texture = ExtResource( 3 )
