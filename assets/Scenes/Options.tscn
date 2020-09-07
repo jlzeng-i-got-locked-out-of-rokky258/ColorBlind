@@ -1,0 +1,243 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Graphics/3.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://assets/Scripts/Fade.gd" type="Script" id=4]
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Control
+
+var path = \"\"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+func _on_Fade_fade_finished():
+	print_debug(\"changing\")
+	get_tree().change_scene(path)
+
+
+func _on_BackButton_pressed():
+	print_debug(\"PRESSED\")
+	path = \"res://assets/Scenes/StartScreen.tscn\"
+	$Fade.show()
+	$Fade.fade_in()
+	
+
+
+func _on_HSlider_value_changed(value):
+	Global.sfxVol = value;
+	Global.musicVol = value;
+"
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Button
+
+
+var scene = \"res://assets/Scenes/World.tscn\"
+"
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="GDScript" id=7]
+script/source = "extends RichTextLabel
+var storedText = \"BACK\"
+
+func _ready():
+	bbcode_text = \"[center]\"+ storedText + \"[/center]\"
+func _on_Label_mouse_entered():
+	bbcode_text = \"[center][wave][rainbow val=0.8 sat=0.1]\"+ storedText + \"[/wave][/center][/rainbow]\"
+	print_debug(\"HELLO\")
+
+
+func _on_Label_mouse_exited():
+	bbcode_text = \"[center]\"+ storedText + \"[/center]\"
+"
+
+[sub_resource type="Animation" id=8]
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5 )
+}
+
+[node name="Options" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 1720.0
+margin_bottom = 930.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton2" type="Button" parent="Menu"]
+margin_right = 1520.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 1520, 120 )
+custom_styles/focus = SubResource( 1 )
+flat = true
+script = SubResource( 2 )
+
+[node name="Label" type="RichTextLabel" parent="Menu/StartButton2"]
+margin_right = 380.0
+margin_bottom = 48.0
+rect_scale = Vector2( 4, 4 )
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[rainbow][wave] [center]COLOR[/center][/wave][/rainbow]BLIND"
+text = " COLORBLIND"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 124.0
+margin_right = 1520.0
+margin_bottom = 776.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 1520.0
+margin_bottom = 652.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="Menu/CenterRow/Buttons"]
+margin_top = 254.0
+margin_right = 1520.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 760, 40 )
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "VOLUME
+"
+text = "VOLUME
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSlider" type="HSlider" parent="Menu/CenterRow/Buttons"]
+margin_top = 298.0
+margin_right = 1520.0
+margin_bottom = 314.0
+min_value = -80.0
+max_value = 0.0
+
+[node name="BackButton" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 318.0
+margin_right = 1520.0
+margin_bottom = 398.0
+rect_min_size = Vector2( 1520, 80 )
+custom_styles/focus = SubResource( 6 )
+flat = true
+
+[node name="Label" type="RichTextLabel" parent="Menu/CenterRow/Buttons/BackButton"]
+margin_top = 20.0
+margin_right = 380.0
+margin_bottom = 39.0
+rect_scale = Vector2( 4, 4 )
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "START
+"
+text = "START
+"
+script = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu"]
+margin_top = 780.0
+margin_right = 1520.0
+margin_bottom = 780.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+
+[node name="FlavorText" type="RichTextLabel" parent="."]
+margin_left = 200.0
+margin_top = 878.0
+margin_right = 1720.0
+margin_bottom = 938.0
+rect_min_size = Vector2( 1520, 60 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[right]CREATED BY SILKY AND RICHY FOR [rainbow]MINIJAM 62[/rainbow][/right]"
+text = "CREATED BY SILKY AND RICHY FOR MINIJAM 62"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+"anims/Fade IN" = SubResource( 8 )
+[connection signal="pressed" from="Menu/StartButton2" to="." method="_on_StartButton_pressed"]
+[connection signal="mouse_entered" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_exited"]
+[connection signal="value_changed" from="Menu/CenterRow/Buttons/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="mouse_entered" from="Menu/CenterRow/Buttons/BackButton/Label" to="Menu/CenterRow/Buttons/BackButton/Label" method="_on_Label_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/CenterRow/Buttons/BackButton/Label" to="Menu/CenterRow/Buttons/BackButton/Label" method="_on_Label_mouse_exited"]
+[connection signal="fade_finished" from="Fade" to="." method="_on_Fade_fade_finished"]
+[connection signal="animation_finished" from="Fade/AnimationPlayer" to="Fade" method="_on_AnimationPlayer_animation_finished"]

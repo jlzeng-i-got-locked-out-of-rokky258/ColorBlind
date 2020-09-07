@@ -8,6 +8,8 @@ var score = 0
 var paused = false
 var timerPaused = false
 
+var sfxVol = 0
+var musicVol = 0
 
 var rng = RandomNumberGenerator.new()
 
