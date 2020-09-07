@@ -17,7 +17,7 @@
 [ext_resource path="res://assets/Graphics/Glow.png" type="Texture" id=15]
 [ext_resource path="res://assets/Graphics/house.png" type="Texture" id=16]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 
@@ -57,11 +57,11 @@ func _on_JumpPickup_collected():
 	$\"Teal Tiles2\".visible = true
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 100 )
 
 [node name="World" type="Node2D"]
-script = SubResource( 2 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -102,7 +102,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Pink Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.972549, 0.823529, 1, 1 )
+modulate = Color( 0.972549, 0.823529, 1, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -112,7 +112,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Yellow Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 1, 0.945098, 0.823529, 1 )
+modulate = Color( 1, 0.945098, 0.823529, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -122,7 +122,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.631373, 1, 0.929412, 1 )
+modulate = Color( 0.631373, 1, 0.929412, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -132,7 +132,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles2" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.780392, 0.541176, 1, 1 )
+modulate = Color( 0.780392, 0.541176, 1, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -932,22 +932,22 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -15.7485, -28.9089 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 340.122, -91.1354 )
 rotation = -0.523598
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 213.68, -222.899 )
 rotation = -1.0472
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 54.9918, -196.943 )
 rotation = 0.785397
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 [connection signal="collected" from="HoverPickup" to="." method="_on_HoverPickup_collected"]
 [connection signal="collected" from="WallJumpPickup" to="." method="_on_WallJumpPickup_collected"]
 [connection signal="collected" from="DashPickup" to="." method="_on_DashPickup_collected"]

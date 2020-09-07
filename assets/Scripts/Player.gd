@@ -198,9 +198,6 @@ func _physics_process(delta):
 	else: # Stopping
 		velocity.x *= pow(1 - HORIZONTAL_DAMPING_WHEN_STOPPING, delta * 10)
 	
-	if (Input.is_action_just_pressed("move_down")):
-		lastSafePosition = position
-
 func die():
 	alive = false
 	$AnimationPlayer.play("Death")

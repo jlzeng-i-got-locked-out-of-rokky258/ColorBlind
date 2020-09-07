@@ -138,7 +138,7 @@ rect_scale = Vector2( 4, 4 )
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[rainbow] [center]COLORBLIND[/center][/rainbow]"
+bbcode_text = "[rainbow][wave] [center]COLOR[/center][/wave][/rainbow]BLIND"
 text = " COLORBLIND"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,9 +158,9 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="StartButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 142.0
+margin_top = 204.0
 margin_right = 1520.0
-margin_bottom = 262.0
+margin_bottom = 324.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 1 )
 flat = true
@@ -184,6 +184,7 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="Menu/CenterRow/Buttons"]
+visible = false
 margin_top = 266.0
 margin_right = 1520.0
 margin_bottom = 386.0
@@ -209,9 +210,9 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 390.0
+margin_top = 328.0
 margin_right = 1520.0
-margin_bottom = 510.0
+margin_bottom = 448.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 6 )
 flat = true
@@ -247,8 +248,8 @@ margin_bottom = 938.0
 rect_min_size = Vector2( 1520, 60 )
 custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[right]CREATED BY WAH 2020[/right]"
-text = "CREATED BY WAH 2020"
+bbcode_text = "[right]CREATED BY SILKY AND RICHY FOR [rainbow]MINIJAM 62[/rainbow][/right]"
+text = "CREATED BY SILKY AND RICHY FOR MINIJAM 62"
 __meta__ = {
 "_edit_use_anchors_": false
 }
