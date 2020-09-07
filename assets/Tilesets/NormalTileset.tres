@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=110 format=2]
 
-[ext_resource path="res://assets/graphics/autotile.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/autotile.png" type="Texture" id=1]
 [ext_resource path="res://assets/Graphics/slopes.png" type="Texture" id=2]
 [ext_resource path="res://assets/Graphics/monochrome_transparent_packed.png" type="Texture" id=3]
 

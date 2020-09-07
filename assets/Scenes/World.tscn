@@ -85,10 +85,10 @@ func _on_EndGameBox_body_entered(body):
 	$UI/Control2/DialogueBox.load_dialog()
 "
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 120, 16 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 100 )
 
 [node name="World" type="Node2D"]
@@ -961,7 +961,7 @@ position = Vector2( 2472, -1200 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameBox"]
 position = Vector2( 120, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 2287.91, -1280 )
@@ -971,22 +971,22 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -15.7485, -28.9089 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 340.122, -91.1354 )
 rotation = -0.523598
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 213.68, -222.899 )
 rotation = -1.0472
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 54.9918, -196.943 )
 rotation = 0.785397
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 [connection signal="collected" from="HoverPickup" to="." method="_on_HoverPickup_collected"]
 [connection signal="collected" from="WallJumpPickup" to="." method="_on_WallJumpPickup_collected"]
 [connection signal="collected" from="DashPickup" to="." method="_on_DashPickup_collected"]

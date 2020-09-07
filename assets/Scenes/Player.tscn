@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/graphics/monochrome_transparent_packed.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/monochrome_transparent_packed.png" type="Texture" id=1]
 [ext_resource path="res://assets/Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://assets/Graphics/dust.png" type="Texture" id=3]
 
