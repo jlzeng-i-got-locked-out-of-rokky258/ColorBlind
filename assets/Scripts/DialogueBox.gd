@@ -3,7 +3,7 @@ extends Control
 var dialog = [
 	'Huh? Where am I? Underground or something? I need to get back home!',
 	'Why is it so COLORLESS around here?',
-	'Something is wrong, I should hurry.'
+	'Something is wrong. I should hurry.'
 ]
 var dialog_index = 0;
 var finished = false;

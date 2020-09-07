@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/Graphics/3.fnt" type="BitmapFont" id=2]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.516129, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.45098, 0.45098, 0.45098, 1, 0.00784314, 0.00784314, 0.00784314, 1 )
+offsets = PoolRealArray( 0.0193548, 0.535484, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -31,6 +31,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="DialogueBox"]
+modulate = Color( 1, 1, 1, 0.160784 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = SubResource( 2 )
@@ -45,8 +46,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
 margin_top = 20.0
-margin_right = -30.0
-margin_bottom = -20.0
+margin_right = -896.0
+margin_bottom = -74.0
+rect_scale = Vector2( 2, 2 )
 custom_fonts/normal_font = ExtResource( 2 )
 custom_colors/default_color = Color( 0.152941, 0.933333, 0.694118, 1 )
 bbcode_enabled = true
