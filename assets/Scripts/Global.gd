@@ -4,7 +4,7 @@ var player
 var time = 0
 var deaths = 0
 var score = 0
-
+var deathless = false
 var paused = false
 var timerPaused = false
 
@@ -38,6 +38,8 @@ func getDeaths():
 
 func getScore():
 	return score
+
+
 
 
 func getTimeString():

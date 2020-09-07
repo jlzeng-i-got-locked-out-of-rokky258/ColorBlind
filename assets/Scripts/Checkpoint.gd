@@ -18,4 +18,6 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not Global.timerPaused:
 		$Label.text = Global.getTimeString()
-	Global.player.lastSafePosition = position
+	print_debug(Global.deathless)
+	if not Global.deathless:
+		Global.player.lastSafePosition = position

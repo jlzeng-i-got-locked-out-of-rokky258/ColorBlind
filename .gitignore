@@ -9,3 +9,11 @@ export_presets.cfg
 data_*/
 
 build/
+Builds/.pck
+Builds/.x86_64
+Builds/.x86_64.exe
+Builds/.x86_64.pck
+Builds/COLORBLIND v1.1.1.exe
+Builds/COLORBLIND v1.1.1.pck
+Builds/COLORBLIND.exe
+Builds/COLORBLIND.pck

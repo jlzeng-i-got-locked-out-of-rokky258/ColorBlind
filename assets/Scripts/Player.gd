@@ -212,3 +212,5 @@ func respawn():
 	$AnimationPlayer.play("Idle")
 	$CollisionShape2D.disabled = false
 	position = lastSafePosition
+	if(Global.deathless):
+		get_tree().change_scene("res://assets/Scenes/World.tscn")

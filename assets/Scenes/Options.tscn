@@ -3,10 +3,11 @@
 [ext_resource path="res://assets/Graphics/3.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://assets/Scripts/Fade.gd" type="Script" id=4]
 
-[sub_resource type="GDScript" id=9]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 var path = \"\"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,20 +29,25 @@ func _on_BackButton_pressed():
 func _on_HSlider_value_changed(value):
 	Global.sfxVol = value;
 	Global.musicVol = value;
+
+
+func _on_Deathless_toggled(button_pressed):
+	Global.deathless = button_pressed
+	print_debug(String(button_pressed))
 "
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=3]
 script/source = "extends Button
 
 
 var scene = \"res://assets/Scenes/World.tscn\"
 "
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=4]
 
-[sub_resource type="GDScript" id=7]
+[sub_resource type="GDScript" id=5]
 script/source = "extends RichTextLabel
 var storedText = \"BACK\"
 
@@ -56,7 +62,7 @@ func _on_Label_mouse_exited():
 	bbcode_text = \"[center]\"+ storedText + \"[/center]\"
 "
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 length = 0.5
 tracks/0/type = "bezier"
 tracks/0/path = NodePath(".:color:r")
@@ -103,7 +109,7 @@ tracks/3/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 1
-script = SubResource( 9 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -121,9 +127,9 @@ __meta__ = {
 margin_right = 1520.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 1520, 120 )
-custom_styles/focus = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
 flat = true
-script = SubResource( 2 )
+script = SubResource( 3 )
 
 [node name="Label" type="RichTextLabel" parent="Menu/StartButton2"]
 margin_right = 380.0
@@ -152,9 +158,9 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Label2" type="RichTextLabel" parent="Menu/CenterRow/Buttons"]
-margin_top = 254.0
+margin_top = 210.0
 margin_right = 1520.0
-margin_bottom = 294.0
+margin_bottom = 250.0
 rect_min_size = Vector2( 760, 40 )
 mouse_filter = 1
 custom_fonts/normal_font = ExtResource( 1 )
@@ -168,18 +174,37 @@ __meta__ = {
 }
 
 [node name="HSlider" type="HSlider" parent="Menu/CenterRow/Buttons"]
-margin_top = 298.0
+margin_top = 254.0
 margin_right = 1520.0
-margin_bottom = 314.0
+margin_bottom = 270.0
 min_value = -80.0
 max_value = 0.0
 
-[node name="BackButton" type="Button" parent="Menu/CenterRow/Buttons"]
+[node name="Label3" type="RichTextLabel" parent="Menu/CenterRow/Buttons"]
+margin_top = 274.0
+margin_right = 1520.0
+margin_bottom = 314.0
+rect_min_size = Vector2( 760, 40 )
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "DEATHLESS"
+text = "DEATHLESS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Deathless" type="CheckButton" parent="Menu/CenterRow/Buttons"]
 margin_top = 318.0
 margin_right = 1520.0
-margin_bottom = 398.0
+margin_bottom = 358.0
+
+[node name="BackButton" type="Button" parent="Menu/CenterRow/Buttons"]
+margin_top = 362.0
+margin_right = 1520.0
+margin_bottom = 442.0
 rect_min_size = Vector2( 1520, 80 )
-custom_styles/focus = SubResource( 6 )
+custom_styles/focus = SubResource( 4 )
 flat = true
 
 [node name="Label" type="RichTextLabel" parent="Menu/CenterRow/Buttons/BackButton"]
@@ -194,7 +219,7 @@ bbcode_text = "START
 "
 text = "START
 "
-script = SubResource( 7 )
+script = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -231,11 +256,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
-"anims/Fade IN" = SubResource( 8 )
+"anims/Fade IN" = SubResource( 6 )
 [connection signal="pressed" from="Menu/StartButton2" to="." method="_on_StartButton_pressed"]
 [connection signal="mouse_entered" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_exited"]
 [connection signal="value_changed" from="Menu/CenterRow/Buttons/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="toggled" from="Menu/CenterRow/Buttons/Deathless" to="." method="_on_Deathless_toggled"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
 [connection signal="mouse_entered" from="Menu/CenterRow/Buttons/BackButton/Label" to="Menu/CenterRow/Buttons/BackButton/Label" method="_on_Label_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/CenterRow/Buttons/BackButton/Label" to="Menu/CenterRow/Buttons/BackButton/Label" method="_on_Label_mouse_exited"]
