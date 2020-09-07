@@ -17,51 +17,68 @@
 [ext_resource path="res://assets/Graphics/Glow.png" type="Texture" id=15]
 [ext_resource path="res://assets/Graphics/house.png" type="Texture" id=16]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	pass
 
 
 func _on_HoverPickup_collected():
-	print_debug(\"YES\")
 	$\"Pink Tiles\".visible = true
-	
+	$UI/Control2/DialogueBox.dialog = [
+		\"Hold JUMP while falling to hover!\",
+		\"You will fall much slower while hovering.\"
+	]
+	$UI/Control2/DialogueBox.dialog_index = 0
+	$UI/Control2/DialogueBox.finished = false
+	$UI/Control2/DialogueBox.visible = true
+	$UI/Control2/DialogueBox.load_dialog()
 
 
 func _on_WallJumpPickup_collected():
-	print_debug(\"YES\")
 	$\"Yellow Tiles\".visible = true
+	$UI/Control2/DialogueBox.dialog = [
+		\"Press JUMP while against a wall to wall-jump!\",
+		\"You can wall-jump indefinitely.\"
+	]
+	$UI/Control2/DialogueBox.dialog_index = 0
+	$UI/Control2/DialogueBox.finished = false
+	$UI/Control2/DialogueBox.visible = true
+	$UI/Control2/DialogueBox.load_dialog()
 
 
 func _on_DashPickup_collected():
-	print_debug(\"YES\")
 	$\"Teal Tiles\".visible = true
+	$UI/Control2/DialogueBox.dialog = [
+		\"Press SHIFT to dash!\",
+		\"You can dash while in the air.\",
+		\"Dash has a long cooldown be wary of this.\"
+	]
+	$UI/Control2/DialogueBox.dialog_index = 0
+	$UI/Control2/DialogueBox.finished = false
+	$UI/Control2/DialogueBox.visible = true
+	$UI/Control2/DialogueBox.load_dialog()
 
 
 func _on_JumpPickup_collected():
-	print_debug(\"YES\")
 	$\"Teal Tiles2\".visible = true
+	$UI/Control2/DialogueBox.dialog = [
+		\"Press JUMP while in the air to air-jump!\",
+		\"You must touch the floor before you can air-jump again.\"
+	]
+	$UI/Control2/DialogueBox.dialog_index = 0
+	$UI/Control2/DialogueBox.finished = false
+	$UI/Control2/DialogueBox.visible = true
+	$UI/Control2/DialogueBox.load_dialog()
 "
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 100 )
 
 [node name="World" type="Node2D"]
-script = SubResource( 2 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -75,7 +92,7 @@ texture = ExtResource( 15 )
 
 [node name="UI" parent="." instance=ExtResource( 7 )]
 
-[node name="Control" parent="." instance=ExtResource( 6 )]
+[node name="Control2" parent="UI" instance=ExtResource( 6 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -932,22 +949,22 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -15.7485, -28.9089 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 340.122, -91.1354 )
 rotation = -0.523598
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 213.68, -222.899 )
 rotation = -1.0472
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 54.9918, -196.943 )
 rotation = 0.785397
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 [connection signal="collected" from="HoverPickup" to="." method="_on_HoverPickup_collected"]
 [connection signal="collected" from="WallJumpPickup" to="." method="_on_WallJumpPickup_collected"]
 [connection signal="collected" from="DashPickup" to="." method="_on_DashPickup_collected"]
