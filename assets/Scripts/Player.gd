@@ -59,7 +59,7 @@ func _ready():
 	$Sprite.modulate = Color(1, 1, 1)
 	startColor = $Sprite.modulate
 	lastSafePosition = position
-
+	$SFX.volume_db = Global.musicVol 
 func _physics_process(delta):
 	if !alive:
 		position.y -= 10 * delta

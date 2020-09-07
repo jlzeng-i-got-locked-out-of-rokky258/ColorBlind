@@ -13,7 +13,9 @@ func _on_StartButton_pressed():
 
 func _on_OptionsButton_pressed():
 	print_debug("PRESSED")
-	path = "res://assets/Scenes/World.tscn"
+	path = "res://assets/Scenes/Options.tscn"
+	$Fade.show()
+	$Fade.fade_in()
 
 func _on_QuitButton_pressed():
 	print_debug("PRESSED")
