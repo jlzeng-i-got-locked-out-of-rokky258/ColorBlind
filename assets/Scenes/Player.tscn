@@ -120,3 +120,6 @@ explosiveness = 0.15
 local_coords = false
 process_material = SubResource( 8 )
 texture = ExtResource( 3 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -2.0

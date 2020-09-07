@@ -4,6 +4,15 @@ var alive = true
 
 var lastSafePosition = Vector2(0, 0)
 
+var audiopaths = ["res://assets/Sounds/jump.wav", #Jump
+"res://assets/Sounds/jumpland.wav", #Land
+"res://assets/Sounds/sadge.wav", #Die
+"res://assets/Sounds/upshort.wav", #Coin
+"res://assets/Sounds/whoosh.wav", #feather maybe
+"res://assets/Sounds/whoosh2.wav", #Dash
+"res://assets/Sounds/FX01.wav"
+]
+
 #Variables that need to be set to false at the start so the player has progression 
 export var canDash = false;
 export var maxJumps = 1;
@@ -110,6 +119,8 @@ func _physics_process(delta):
 					$Sprite.frame = 4
 					desiredColor = Color(1, 0.714844, 0.868561)
 				$ChuteSprite.visible = true
+				
+				
 			else: # Normal fall
 				$ChuteSprite.visible = false
 				newMovement.y += gravity * delta
@@ -143,6 +154,8 @@ func _physics_process(delta):
 		velocity.y = jumpSpeed*1.2
 		falling = true
 		fallTimer = 0.0
+		$SFX.stream = load(audiopaths[0])
+		$SFX.play()
 		
 		SnapVector.y = 0
 		velocity.x = maxSpeed.x * -wallDir *.35
@@ -160,6 +173,8 @@ func _physics_process(delta):
 		velocity.x = dashSpeed * dashDirection
 		velocity.y = 0.0
 		desiredColor = Color(0.025009, 0.582031, 0.5037);
+		$SFX.stream = load(audiopaths[5])
+		$SFX.play()
 		if dashTimer <= 0.0:
 			dashCooldownTimer = DASH_COOLDOWN
 			dashing = false
@@ -190,7 +205,8 @@ func die():
 	alive = false
 	$AnimationPlayer.play("Death")
 	$CollisionShape2D.disabled = true
-
+	$SFX.stream = load(audiopaths[2])
+	$SFX.play()
 
 func respawn():
 	alive = true

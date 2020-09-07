@@ -26,3 +26,4 @@ func _on_Area2D_body_entered(body):
 	Global.collectCoin(value)
 	FLIP_TIME = 0.15
 	collected = true
+	$SFX.play()
