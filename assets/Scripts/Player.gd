@@ -4,7 +4,7 @@ var alive = true
 
 var lastSafePosition = Vector2(0, 0)
 
-var audiopaths = ["res://assets/Sounds/jump.wav", #Jump
+var audiopaths = ["res://assets/Sounds/Jump2.wav", #Jump
 "res://assets/Sounds/jumpland.wav", #Land
 "res://assets/Sounds/sadge.wav", #Die
 "res://assets/Sounds/upshort.wav", #Coin
