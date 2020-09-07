@@ -119,7 +119,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Pink Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.972549, 0.823529, 1, 1 )
+modulate = Color( 0.972549, 0.823529, 1, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -129,7 +129,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Yellow Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 1, 0.945098, 0.823529, 1 )
+modulate = Color( 1, 0.945098, 0.823529, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -139,7 +139,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.631373, 1, 0.929412, 1 )
+modulate = Color( 0.631373, 1, 0.929412, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -149,7 +149,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles2" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.780392, 0.541176, 1, 1 )
+modulate = Color( 0.780392, 0.541176, 1, 0.784314 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
