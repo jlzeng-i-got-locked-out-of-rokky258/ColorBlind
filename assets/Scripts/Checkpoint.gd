@@ -5,6 +5,7 @@ var flip_counter = 0
 
 var newScale = 1.0
 
+
 func _process(delta):
 	flip_counter += delta
 	if flip_counter > FLIP_TIME:
@@ -15,4 +16,5 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
+	$Label.text = Global.getTimeString()
 	Global.player.lastSafePosition = position

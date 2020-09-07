@@ -39,7 +39,7 @@ var falling = false
 
 var startColor
 
-export var DASH_COOLDOWN = 1.5
+export var DASH_COOLDOWN = 1.2
 export var DASH_TIME = 0.1
 var dashTimer = 0.0
 var dashing = false
@@ -197,13 +197,15 @@ func _physics_process(delta):
 		velocity.x *= pow(1 - HORIZONTAL_DAMPING, delta * 10)
 	else: # Stopping
 		velocity.x *= pow(1 - HORIZONTAL_DAMPING_WHEN_STOPPING, delta * 10)
-	
+
+
 func die():
 	alive = false
 	$AnimationPlayer.play("Death")
 	$CollisionShape2D.disabled = true
 	$SFX.stream = load(audiopaths[2])
 	$SFX.play()
+
 
 func respawn():
 	alive = true
