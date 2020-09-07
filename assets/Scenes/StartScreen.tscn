@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Graphics/3.fnt" type="BitmapFont" id=1]
-[ext_resource path="res://assets/Graphics/monochrome_transparent_packed.png" type="Texture" id=2]
 [ext_resource path="res://assets/Scripts/StartScreen.gd" type="Script" id=3]
 [ext_resource path="res://assets/Scripts/Fade.gd" type="Script" id=4]
 
@@ -124,29 +123,44 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="Menu"]
+[node name="StartButton2" type="Button" parent="Menu"]
 margin_right = 1520.0
-margin_bottom = 352.0
-texture = ExtResource( 2 )
-stretch_mode = 4
+margin_bottom = 120.0
+rect_min_size = Vector2( 1520, 120 )
+custom_styles/focus = SubResource( 1 )
+flat = true
+script = SubResource( 2 )
+
+[node name="Label" type="RichTextLabel" parent="Menu/StartButton2"]
+margin_right = 380.0
+margin_bottom = 48.0
+rect_scale = Vector2( 4, 4 )
+mouse_filter = 1
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[rainbow] [center]COLORBLIND[/center][/rainbow]"
+text = " COLORBLIND"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
-margin_top = 356.0
+margin_top = 124.0
 margin_right = 1520.0
-margin_bottom = 780.0
+margin_bottom = 776.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
 margin_right = 1520.0
-margin_bottom = 424.0
+margin_bottom = 652.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="StartButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 28.0
+margin_top = 142.0
 margin_right = 1520.0
-margin_bottom = 148.0
+margin_bottom = 262.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 1 )
 flat = true
@@ -170,9 +184,9 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 152.0
+margin_top = 266.0
 margin_right = 1520.0
-margin_bottom = 272.0
+margin_bottom = 386.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 4 )
 flat = true
@@ -195,9 +209,9 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 276.0
+margin_top = 390.0
 margin_right = 1520.0
-margin_bottom = 396.0
+margin_bottom = 510.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 6 )
 flat = true
@@ -218,6 +232,12 @@ script = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Menu"]
+margin_top = 780.0
+margin_right = 1520.0
+margin_bottom = 780.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 
 [node name="FlavorText" type="RichTextLabel" parent="."]
 margin_left = 200.0
@@ -246,6 +266,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
 "anims/Fade IN" = SubResource( 8 )
+[connection signal="pressed" from="Menu/StartButton2" to="." method="_on_StartButton_pressed"]
+[connection signal="mouse_entered" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/StartButton2/Label" to="Menu/StartButton2/Label" method="_on_Label_mouse_exited"]
 [connection signal="pressed" from="Menu/CenterRow/Buttons/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="mouse_entered" from="Menu/CenterRow/Buttons/StartButton/Label" to="Menu/CenterRow/Buttons/StartButton/Label" method="_on_Label_mouse_entered"]
 [connection signal="mouse_exited" from="Menu/CenterRow/Buttons/StartButton/Label" to="Menu/CenterRow/Buttons/StartButton/Label" method="_on_Label_mouse_exited"]

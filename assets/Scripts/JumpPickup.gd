@@ -2,7 +2,7 @@ extends Node2D
 
 onready var yStart = position.y
 var collected = false
-
+signal collected
 
 func _ready():
 	$Sprite.modulate = Color(0.935638, 0.777344, 1)
@@ -21,4 +21,5 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not collected:
 		Global.player.maxJumps += 1
+		emit_signal("collected")
 		collected = true
