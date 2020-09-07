@@ -133,14 +133,17 @@ func _physics_process(delta):
 		velocity.y = jumpSpeed
 		falling = true
 		fallTimer = 0.0
+		desiredColor = Color(0.40625, 0.429443, 1)
 		if jumps != maxJumps:
 			$Particles2D.emitting = true
 		jumps -= 1
 		SnapVector.y = 0
 	elif (canWallJump && Input.is_action_just_pressed("move_jump") && wallRememberTimer > 0.0  && !is_on_floor()):
+		desiredColor = Color(0.949646, 1, 0.742188)
 		velocity.y = jumpSpeed*1.2
 		falling = true
 		fallTimer = 0.0
+		
 		SnapVector.y = 0
 		velocity.x = maxSpeed.x * -wallDir *.35
 		$Particles2D.emitting = true
