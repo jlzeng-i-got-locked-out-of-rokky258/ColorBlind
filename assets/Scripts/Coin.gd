@@ -15,7 +15,7 @@ func _process(delta):
 		flip_counter = 0
 	if collected:
 		position.y -= 10 * delta
-		if position.y > (yStart + 5):
+		if position.y < (yStart - 10):
 			queue_free()
 		modulate.a -= delta * 2
 	else:
@@ -23,7 +23,8 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	Global.collectCoin(value)
-	FLIP_TIME = 0.15
-	collected = true
-	$SFX.play()
+	if not collected:
+		Global.collectCoin(value)
+		FLIP_TIME = 0.15
+		collected = true
+		$SFX.play()
