@@ -1,15 +1,16 @@
 extends Node
 
 var player 
-
 var time = 0
-
 var deaths = 0
-
 var score = 0
 
+
+var rng = RandomNumberGenerator.new()
+
+
 func _ready():
-	pass
+	rng.randomize()
 
 
 func _process(delta):

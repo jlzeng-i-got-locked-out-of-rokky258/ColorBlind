@@ -171,7 +171,7 @@ func _physics_process(delta):
 	velocity += newMovement
 	
 	velocity.x = clamp(velocity.x, -maxSpeed.x, maxSpeed.x)
-	velocity.y = clamp(velocity.y, -maxSpeed.y, maxSpeed.y)
+	velocity.y = clamp(velocity.y, -maxSpeed.y * 100.0, maxSpeed.y)
 	
 	velocity = move_and_slide_with_snap(velocity, SnapVector, Vector2(0, -1), true, 4, 0.8)
 	
