@@ -17,9 +17,7 @@ _global_script_class_icons={
 
 config/name="Color Blind"
 run/main_scene="res://assets/Scenes/StartScreen.tscn"
-boot_splash/image="res://assets/Graphics/Untitled-1.png"
-boot_splash/bg_color=Color( 0.133333, 0.133333, 0.133333, 1 )
-config/icon="res://assets/Graphics/Untitled-1.png"
+config/icon="res://icon.png"
 
 [autoload]
 

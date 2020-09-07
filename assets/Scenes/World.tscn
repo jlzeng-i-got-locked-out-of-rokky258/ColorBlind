@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/Tilesets/NormalTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/Scenes/Player.tscn" type="PackedScene" id=2]
@@ -72,7 +72,21 @@ func _on_JumpPickup_collected():
 	$UI/Control2/DialogueBox.finished = false
 	$UI/Control2/DialogueBox.visible = true
 	$UI/Control2/DialogueBox.load_dialog()
+
+
+func _on_EndGameBox_body_entered(body):
+	$UI/Control2/DialogueBox.dialog = [
+		\"I made it home and all the color has returned!\",
+		\"Thank you for playing! Made in 72 hours by Silky and Richy for the Mini Jam 62 on itch.io\"
+	]
+	$UI/Control2/DialogueBox.dialog_index = 0
+	$UI/Control2/DialogueBox.finished = false
+	$UI/Control2/DialogueBox.visible = true
+	$UI/Control2/DialogueBox.load_dialog()
 "
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 120, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 100 )
@@ -119,7 +133,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Pink Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.972549, 0.823529, 1, 0.784314 )
+modulate = Color( 0.972549, 0.823529, 1, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -129,7 +143,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Yellow Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 1, 0.945098, 0.823529, 0.784314 )
+modulate = Color( 1, 0.945098, 0.823529, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -139,7 +153,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.631373, 1, 0.929412, 0.784314 )
+modulate = Color( 0.631373, 1, 0.929412, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -149,7 +163,7 @@ tile_data = PoolIntArray( -4456517, 0, 1, -4456516, 0, 65536, -4456515, 0, 65536
 
 [node name="Teal Tiles2" type="TileMap" parent="."]
 visible = false
-modulate = Color( 0.780392, 0.541176, 1, 0.784314 )
+modulate = Color( 0.780392, 0.541176, 1, 1 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 2
@@ -941,6 +955,14 @@ modulate = Color( 0.556863, 0.258824, 0.258824, 1 )
 position = Vector2( 2535, -1199 )
 texture = ExtResource( 16 )
 
+[node name="EndGameBox" type="Area2D" parent="."]
+modulate = Color( 0.556863, 0.258824, 0.258824, 1 )
+position = Vector2( 2472, -1200 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndGameBox"]
+position = Vector2( 120, 0 )
+shape = SubResource( 3 )
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 2287.91, -1280 )
 rotation = 0.261799
@@ -969,3 +991,4 @@ shape = SubResource( 2 )
 [connection signal="collected" from="WallJumpPickup" to="." method="_on_WallJumpPickup_collected"]
 [connection signal="collected" from="DashPickup" to="." method="_on_DashPickup_collected"]
 [connection signal="collected" from="JumpPickup" to="." method="_on_JumpPickup_collected"]
+[connection signal="body_entered" from="EndGameBox" to="." method="_on_EndGameBox_body_entered"]
