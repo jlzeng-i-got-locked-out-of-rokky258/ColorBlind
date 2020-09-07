@@ -15,7 +15,6 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Background" type="TextureRect" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.396078 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,3 +39,18 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[rainbow][center]P A W S E D[/rainbow][/center]"
 text = "P A W S E D[/rainbow]"
+
+[node name="Text2" type="RichTextLabel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -456.0
+margin_top = 84.0001
+margin_right = -152.0
+margin_bottom = 124.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[rainbow sat=10 freq=0.2][center]R TO RESTART[/rainbow][/center]"
+text = "R TO RESTART[/rainbow]"
