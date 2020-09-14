@@ -158,9 +158,9 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="StartButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 204.0
+margin_top = 142.0
 margin_right = 1520.0
-margin_bottom = 324.0
+margin_bottom = 262.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 1 )
 flat = true
@@ -184,7 +184,6 @@ __meta__ = {
 }
 
 [node name="OptionsButton" type="Button" parent="Menu/CenterRow/Buttons"]
-visible = false
 margin_top = 266.0
 margin_right = 1520.0
 margin_bottom = 386.0
@@ -210,9 +209,9 @@ __meta__ = {
 }
 
 [node name="QuitButton" type="Button" parent="Menu/CenterRow/Buttons"]
-margin_top = 328.0
+margin_top = 390.0
 margin_right = 1520.0
-margin_bottom = 448.0
+margin_bottom = 510.0
 rect_min_size = Vector2( 1520, 120 )
 custom_styles/focus = SubResource( 6 )
 flat = true

@@ -46,3 +46,19 @@ scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="RichTextLabel" parent="Control"]
+anchor_left = 24.0
+anchor_right = 24.0
+margin_left = -264.0
+margin_top = 53.0
+margin_right = -86.0
+margin_bottom = 70.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "PLACEHOLDER"
+text = "PLACEHOLDER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
